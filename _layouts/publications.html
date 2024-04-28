@@ -1,0 +1,737 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+  <head>
+    {% include _head.html %}
+    <style>
+      /* tell the container's children to float left: */
+      .float-my-children > * {
+        float:left;
+        margin-right:5px;
+      }
+
+      .clearfix {
+        *zoom:1 /* for IE */
+      }
+
+      .clearfix:before,
+      .clearfix:after {
+        content: " ";
+        display: table;
+      }
+
+      .clearfix:after {
+        clear: both;
+      }
+    </style>
+  </head>
+
+  <body class="page">
+    <style>
+      /*********************************
+      The list of publication items
+      *********************************/
+      /* The list of items */
+      .biblist { }
+
+      /* The item */
+      .biblist li { }
+
+      /* You can define custom styles for plstyle field here. */
+
+
+      /*************************************
+      The box that contain BibTeX code
+      *************************************/
+      div.noshow { display: none; }
+      div.bibtex {
+	  margin-right: 0%;
+	  margin-top: 1.2em;
+	  margin-bottom: 1em;
+	  border: 1px solid silver;
+	  padding: 0em 1em;
+	  background: #ffffee;
+      }
+      div.bibtex pre { font-size: 75%; overflow: auto;  width: 100%; padding: 0em 0em;}</style>
+    <script type="text/javascript">
+      <!--
+          // Toggle Display of BibTeX
+          function toggleBibtex(articleid) {
+          var bib = document.getElementById('bib_'+articleid);
+          if (bib) {
+          if(bib.className.indexOf('bibtex') != -1) {
+          bib.className.indexOf('noshow') == -1?bib.className = 'bibtex noshow':bib.className = 'bibtex';
+          }
+          } else {
+          return;
+          }
+          }
+        -->
+    </script>
+
+    {% include _browser-upgrade.html %}
+
+    {% include _navigation.html %}
+
+    {% if page.image.feature %}
+    <div class="image-wrap">
+      <img src=
+           {% if page.image.feature contains 'http://' %}
+           "{{ page.image.feature }}"
+           {% elsif page.image.feature contains 'https://' %}
+           "{{ page.image.feature }}"
+           {% else %}
+           "{{ site.url }}/images/{{ page.image.feature }}"
+           {% endif %}
+           alt="{{ page.title }} feature image">
+      {% if page.image.credit %}
+      <span class="image-credit">Photo Credit: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></span>
+      {% endif %}
+    </div><!-- /.image-wrap -->
+    {% endif %}
+
+    <div id="main" role="main">
+      <div class="article-author-side">
+        {% include _author-bio.html %}
+      </div>
+      <article>
+        <h1>{{ page.title }}</h1>
+        <div class="article-wrap" style="width:800px">
+          {{ content }}
+
+          <i>*</i> indicates that authors contributed equally.
+
+          <!-- <h2 style="margin-bottom:0px;padding-top:10px;">Preprints</h2>
+          <br />
+          The following manuscripts are still in progress. Suggestions are welcome. -->
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2023_robotinme_teaser.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Kiran Doshi, <b>Yijiang Huang</b>, Stelian Coros
+            <br/>
+            &ldquo;<b>On Hand-Held Grippers and the Morphological Gap in Human Manipulation Demonstration</b>,&rdquo;
+            <br/>            
+						<i>arxiv 2311.01832</i>.
+            <br/>            
+            <a href="javascript:toggleBibtex('doshi2023hand')">[BibTeX]</a>
+	          <a href="http://arxiv.org/abs/2311.01832">[PDF]</a>
+	          <a href="https://youtube.com/playlist?list=PLvom4vstj7Pc5HGb1E1f0uO220QGQIgqc&si=HeNNhdZLWjixqHpK">[Video]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_doshi2023hand" class="bibtex noshow">
+          <pre>
+@article{doshi2023hand,
+  title={On Hand-Held Grippers and the Morphological Gap in Human Manipulation Demonstration},
+  author={Doshi, Kiran and Huang, Yijiang and Coros, Stelian},
+  journal={arXiv preprint arXiv:2311.01832},
+  year={2023}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2022_topopt_deflation.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Mohamed Tarek, <b>Yijiang Huang</b>
+            <br/>
+            &ldquo;<b>General deflation for finding multiple local optima in
+non-convex optimization</b>,&rdquo;
+            <br/>            
+						<!-- <i>arxiv 2201.11926</i>. -->
+						<i>Structural and Multidisciplinary Optimization</i>, in press.
+            <br />
+            <a href="javascript:toggleBibtex('tarek2022deflation')">[BibTeX]</a>
+	          <!-- <a href="https://arxiv.org/pdf/2201.11926.pdf">[arxiv:2201.11926]</a> -->
+	          <a href="../papers/Deflation_preprint.pdf">[PDF]</a>
+	          <!-- <a href="https://youtube.com/playlist?list=PLPE70_UHUxDJhtmm7cL69fGMerDTnTZJj">[Video demo]</a> -->
+			      <!-- <a href="https://dl.acm.org/doi/abs/10.1145/3328939.3328999">[ACM Port]</a> -->
+	          <a href="https://github.com/JuliaTopOpt/deflation_examples">[Code]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_tarek2022deflation" class="bibtex noshow">
+          <pre>
+@article{tarek2022deflation,
+  title={General deflation for finding multiple local optima in
+non-convex optimization},
+  author={Tarek, Mohamed and Huang, Yijiang},
+  journal={arXiv preprint arXiv:2201.11926},
+  year={2022}
+}
+          </pre>
+          </div>
+
+          <!-- <h2 style="margin-bottom:0px;padding-top:20px;">Published papers</h2> -->
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2023_seq_to_cover.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Ziqi Wang, Florian Kennel-Maushart, <b>Yijiang Huang</b>, Bernhard Thomaszewski, Stelian Coros
+            <br/>
+            &ldquo;<b>
+            A Temporal Coherent Topology Optimization Approach for Assembly Planning of Bespoke Frame Structures
+            </b>,&rdquo;
+            <br/>            
+            <i>ACM Transactions on Graphics (TOG)</i>, 2023.
+            <br />
+            <a href="javascript:toggleBibtex('wang2023temporal')">[BibTeX]</a>
+	          <a href="../papers/SeqTO2023.pdf">[PDF]</a>
+	          <a href="../papers/SeqTO2023_supplementary.pdf">[Supplementary]</a>
+			      <a href="https://youtu.be/VTFGXlluv04">[Video]</a>
+			      <a href="https://youtu.be/HRmducDM7ws">[AR/Robot video]</a>
+	          <!-- <a href="https://github.com/gramaziokohler/integral_timber_joints">[Code]</a> -->
+            <!-- [Code coming soon!] -->
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_wang2023temporal" class="bibtex noshow">
+          <pre>
+@article{wang2023temporal,
+ author = {Wang, Ziqi and Kennel-Maushart, Florian and Huang, Yijiang and Thomaszewski, Bernhard and Coros, Stelian
+},
+ title = {A Temporal Coherent Topology Optimization Approach for Assembly Planning of Bespoke Frame Structures},
+ journal = {ACM Trans. Graph.},
+ issue_date = {August 2023},
+ publisher = {ACM},
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2021_RAL_assembly_roadmap-01.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Jingkai Chen, Jiaoyang Li*, <b>Yijiang Huang</b>*, Caelan Garrett, Dawei Sun, Chuchu Fan, Andreas Hofmann,  Caitlin Mueller, Sven Koenig, Brian C. Williams
+            <br/>
+            &ldquo;<b>Cooperative Task and Motion Planning for Multi-Arm Assembly Systems</b>,&rdquo;
+            <br/>            
+						<i>arxiv 2203.02475</i>.
+            <br />
+            <a href="javascript:toggleBibtex('chen2022coop')">[BibTeX]</a>
+	          <a href="https://arxiv.org/pdf/2203.02475.pdf">[arxiv:2203.02475]</a>
+	          <a href="https://youtube.com/playlist?list=PLPE70_UHUxDJhtmm7cL69fGMerDTnTZJj">[Video demo]</a>
+			      <!-- <a href="https://dl.acm.org/doi/abs/10.1145/3328939.3328999">[ACM Port]</a> -->
+	          <!-- <a href="https://github.com/gramaziokohler/integral_timber_joints">[Code]</a> -->
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_chen2022coop" class="bibtex noshow">
+          <pre>
+ @article{chen2022coop, 
+  title={Cooperative Task and Motion Planning for Multi-Arm Assembly Systems}, 
+  author={Chen, Jingkai and Li, Jiaoyang and Huang, Yijiang and Garrett, Caelan and Sun, Dawei and Fan, Chuchu and Hofmann, Andreas and Mueller, Caitlin and Koenig, Sven and Williams, Brian C.}, 
+  year={2022}, month={Mar},
+  url={http://arxiv.org/abs/2203.02475}, 
+  DOI={10.48550/arXiv.2203.02475}, 
+  note={arXiv:2203.02475 [cs]}, 
+  number={arXiv:2203.02475},
+  publisher={arXiv}
+}
+          </pre>
+          </div>
+
+
+
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2021_SCF_itj_analog.jpg" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            <b>Yijiang Huang</b>, Victor Pok Yin Leung, Caelan Garrett, Fabio Gramazio, Matthias Kohler, Caitlin Mueller 
+            <br/>
+            &ldquo;<b>The new analog: A protocol for linking design and construction intent with algorithmic planning for robotic assembly of complex structures</b>,&rdquo;
+            <br/>            
+						In: <i><a href="https://scf.acm.org/2021/">ACM Symposium on Computational Fabrication</a>, 2021</i>.
+            <br />
+            <a href="javascript:toggleBibtex('huang2021analog')">[BibTeX]</a>
+	          <a href="../papers/Timber_Assembly_SCF2021.pdf">[PDF]</a>
+			      <!-- <a href="https://dl.acm.org/doi/abs/10.1145/3328939.3328999">[ACM Port]</a> -->
+	          <a href="https://github.com/gramaziokohler/integral_timber_joints">[Code]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_huang2021analog" class="bibtex noshow">
+          <pre>
+@inproceedings{huang2021analog,
+author = {Huang, Yijiang and Leung Pok Yin Victor and Garrett, Caelan and Gramazio, Fabio and Kohler, Matthias and Mueller, Caitlin},
+title = {The new analog: A protocol for linking design and construction intent with
+algorithmic planning for robotic assembly of complex structures},
+year = {2021},
+publisher = {Association for Computing Machinery},
+booktitle = {Symposium on Computational Fabrication},
+series = {SCF '21},
+doi = {https://doi.org/10.1145/3485114.3485122}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2021_circular_dome_cover.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            <b>Yijiang Huang</b>, Latifa Alkhayat, Catherine De Wolf, Caitlin T. Mueller
+            <br/>
+            &ldquo;<b>Algorithmic circular design with reused structural elements: Method and Tool</b>,&rdquo;
+            <br/>            
+						<i><a href="http://conceptualdesign2021.com/">International FIB symposium of Conceptual Design of Structures, 2021</a></i>.
+            <br/>            
+            <a href="javascript:toggleBibtex('huang2021circular')">[BibTeX]</a>
+            <a href="../papers/circular_dome_2021.pdf">[PDF]</a>
+            <a href="https://www.fib-international.org/publications/fib-proceedings/i-fib-i-conceptual-design-of-structures-solothurn-2021-proceedings-em-pdf-em-detail.html">[fib port]</a>
+	          <!-- <a href="">[Youtube videos]</a> -->
+	          <a href="https://github.com/yijiangh/algorithmic_circular_design">[Code]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_huang2021circular" class="bibtex noshow">
+          <pre>
+@inproceedings{huang2021circular,
+  title={Algorithmic circular design with reused structural elements: Method and Tool},
+  author={Huang, Yijiang and Alkhayat, Latifa and De Wolf, Catherine and Mueller, Caitlin Tobin},
+  booktitle={Proceedings of International FIB symposium of Conceptual Design of Structures},
+  year={2021}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2021_bar_assembly.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            <b>Yijiang Huang</b>, Caelan R. Garrett, Ian Ting, Stefana Parascho, Caitlin T. Mueller
+            <br/>
+            &ldquo;<b>Robotic additive construction of bar structures: Unified sequence and motion planning</b>,&rdquo;
+            <br/>            
+            <i>Construction Robotics</i>,
+            vol. 5,
+            pp. 115-130,
+            2021.
+            <br />
+            <a href="javascript:toggleBibtex('huang2021barassembly')">[BibTeX]</a>
+            <!-- <a href="../papers/.pdf">[PDF]</a> -->
+	          <a href="https://arxiv.org/pdf/2105.11438.pdf">[arXiv:2105.11438]</a>
+            <a href="https://link.springer.com/article/10.1007/s41693-021-00062-z">[DOI]</a>
+	          <a href="https://www.youtube.com/playlist?list=PLZhY1DwlPIx6iAOnYxApMZxA-OZieX7q-">[Youtube videos]</a>
+	          <a href="https://github.com/yijiangh/coop_assembly">[Code]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_huang2021barassembly" class="bibtex noshow">
+          <pre>
+@article{huang2021barassembly,
+  title={Robotic additive construction of bar structures: Unified sequence and motion planning},
+  author={Huang, Yijiang and Garrett, Caelan Reed and Ting, Ian and Parascho, Stefana and Mueller, Caitlin Tobin},
+  journal={Construction Robotics},
+  pages={115--130},
+  year={2021},
+  publisher={Springer}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/tree_fork_matching.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Felix Amtsberg*, <b>Yijiang Huang</b>*, Daniel J.M. Marshall, Kevin Moreno Gata, Caitlin Mueller
+            <br/>
+            &ldquo;<b>Structural upcycling: Matching digital and natural geometry</b>,&rdquo;
+            <br/>            
+						<i><a href="https://www.aag2020.com/">Advances in Architectural Geometry, 2020</a></i>.
+            <br />
+            <a href="javascript:toggleBibtex('amtsberg2020tree')">[BibTeX]</a>
+	          <a href="../papers/AAG2020_Structural_Upcycling.pdf">[PDF]</a>
+	          <a href="https://youtu.be/4nr-HusI-P4">[Talk-Youtube]</a>
+	          <a href="https://news.mit.edu/2022/using-natures-structures-wooden-buildings-0309">[MIT news]</a>
+	          <a href="https://www.dezeen.com/2022/05/05/tree-forks-mit-digital-structures-architecture/">[Dezeen]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_amtsberg2020tree" class="bibtex noshow">
+          <pre>
+@inproceedings{amtsberg2020tree,
+  title={Structural upcycling: Matching digital and natural geometry},
+  author={Amtsberg, Felix and Huang, Yijiang and Marshall, Daniel J.M. and Gata, Kevin Moreno and Mueller, Caitlin},
+  booktitle={Proceedings of Advances in Architectural Geometry},
+  year={2020}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/rss2020teaser.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Caelan R. Garrett*, <b>Yijiang Huang</b>*, Tomás Lozano-Pérez, Caitlin T. Mueller
+            <br/>
+            &ldquo;<b>Scalable and Probabilistically Complete Planning for Robotic Spatial Extrusion</b>,&rdquo;
+            <br/>            
+            In: <i>Robotics: Science and Systems (RSS), 2020</i>
+            <br />
+            <a href="javascript:toggleBibtex('garrett2020scalable')">[BibTeX]</a>
+	          <a href="https://arxiv.org/pdf/2002.02360.pdf">[arXiv:2002.02360]</a>
+	          <a href="https://roboticsconference.org/program/papers/92">[RSS port]</a>
+	          <a href="https://youtu.be/1HRFeTMNsxU">[Talk]</a>
+	          <a href="https://youtu.be/RsBzc7bEdQg">[Youtube]</a>
+            <a href="https://github.com/caelan/pb-construction">[Code]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_garrett2020scalable" class="bibtex noshow">
+          <pre>
+@inproceedings{garrett2020scalable,
+  title={Scalable and Probabilistically Complete Planning for Robotic Spatial Extrusion},
+  author={Garrett, Caelan Reed and Huang, Yijiang and Lozano-P{\'e}rez, Tom{\'a}s and Mueller, Caitlin Tobin},
+  booktitle={Robotics: Science and Systems (RSS)},
+  year={2020}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2019_scf_michell.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Rahul Arora, Alec Jacobson, Timothy R. Langlois, <b>Yijiang Huang</b>, Caitlin Mueller, Wojciech Matusik, Ariel Shamir, Karan Singh, David I.W. Levin
+            <br/>
+            &ldquo;<b>Volumetric Michell trusses for parametric design & fabrication</b>,&rdquo;
+            <br/>            
+						In: <i><a href="https://scf.acm.org/2019/">ACM Symposium on Computational Fabrication</a>, 2019</i>.
+            <br />
+            <a href="javascript:toggleBibtex('arora2019michell')">[BibTeX]</a>
+	          <a href="https://www.dgp.toronto.edu/projects/michell/volumetric_michell_truss_scf19_arora_et_al.pdf">[PDF]</a>
+			      <a href="https://dl.acm.org/doi/abs/10.1145/3328939.3328999">[ACM Port]</a>
+	          <a href="https://www.dgp.toronto.edu/projects/michell/">[Project (code, talk and more)]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_arora2019michell" class="bibtex noshow">
+          <pre>
+@inproceedings{arora2019michell,
+ author = {Arora, Rahul and Jacobson, Alec and Langlois, Timothy R. and Huang, Yijiang
+ and Mueller, Caitlin and Matusik, Wojciech and Shamir, Ariel and
+ Singh, Karan and Levin, David I.W.},
+ title = {Volumetric Michell Trusses for Parametric Design \& Fabrication},
+ booktitle = {Proceedings of the 3rd ACM Symposium on Computation Fabrication},
+ series = {SCF '19},
+ year = {2019},
+ location = {Pittsburgh, PA, USA},
+ numpages = {13},
+ publisher = {ACM},
+ address = {New York, NY, USA}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/Tessmer_concrete_casting.jpg" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Lavender Tessmer, <b>Yijiang Huang</b>, Caitlin Mueller
+            <br/>
+            &ldquo;<b>Additive Casting of Mass-Customizable Bricks: Workflow for Design and Robotic Fabrication</b>,&rdquo;
+            <br/>            
+						In: <i>Conference of The Association for Computer Aided Design in Architecture (ACADIA), 2019</i>.
+            <br />
+            <a href="javascript:toggleBibtex('tessmer2019acadia')">[BibTeX]</a>
+	          <a href="../papers/Tessmer_acadia19.pdf">[PDF]</a>
+			      <a href="http://papers.cumincad.org/data/works/att/acadia19_198.pdf">[CumInCAD Port]</a>
+	          <a href="https://www.lavender-tessmer.com/additive-casting">[Project]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_tessmer2019acadia" class="bibtex noshow">
+          <pre>
+@inproceedings{tessmer2019acadia,
+  title={Additive Casting of Mass-Customizable Bricks: Workflow for Design and Robotic Fabrication},
+  author={Tessmer, Lavender and Huang, Yijiang and Mueller, Caitlin},
+  booktitle={Proceedings of the 39st Annual Conference of the Association for Computer Aided Design in Architecture (ACADIA)},
+  year={2019}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/conrob_voronoi.jpg" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            <b>Yijiang Huang</b>, Caelan R. Garrett, Caitlin T. Mueller
+            <br/>
+            &ldquo;<b>Automated sequence and motion planning for robotic spatial extrusion of 3D trusses</b>,&rdquo;
+            <br/>            
+            <i>Construction Robotics</i>,
+            vol. 2,
+            no. 1-4,
+            pp. 15-39,
+            2018.
+            <br />
+            <a href="javascript:toggleBibtex('huang2018automated')">[BibTeX]</a>
+            <!-- <a href="../papers/HuangGarrettMueller_ConRob2018_choreo.pdf">[PDF]</a> -->
+	          <a href="https://arxiv.org/abs/1810.00998">[arXiv:1810.00998]</a>
+            <a href="https://link.springer.com/article/10.1007/s41693-018-0012-z">[DOI]</a>
+	          <a href="https://www.youtube.com/playlist?list=PLdlQ2M-oI1DxrZu83V7BInOxSFdkqfmKg">[Youtube videos]</a>
+            <a href="https://github.com/yijiangh/choreo">[Code-ROS]</a>
+	          <!-- <a href="https://github.com/yijiangh/pychoreo">[Code-py]</a> -->
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_huang2018automated" class="bibtex noshow">
+          <pre>
+@article{huang2018automated,
+ title={Automated sequence and motion planning for robotic spatial extrusion of 3D trusses},
+ author={Huang, Yijiang and Garrett, Caelan R and Mueller, Caitlin T},
+ journal={Construction Robotics},
+ pages={15--39},
+ year={2018},
+ publisher={Springer}}
+          </pre>
+          </div>
+		
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/robarch_2018.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            <b>Yijiang Huang</b>, Josephine Carstensen, Lavender Tessmer and Caitlin Mueller
+						<br />
+            &ldquo;<b>Robotic extrusion of architectural structures with nonstandard topology</b>,&rdquo;
+						<br/>            
+						In: <i>Robotic Fabrication in Architecture, Art and Design 2018</i>.
+            <br />
+            <a href="javascript:toggleBibtex('huang2016robarch')">[BibTeX]</a>
+            <a href="../papers/Huang2019_RobArch.pdf">[PDF]</a>
+            <a href="https://link.springer.com/chapter/10.1007/978-3-319-92294-2_29">[DOI]</a>
+            <a href="https://github.com/yijiangh/choreo">[Code-ROS]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_huang2016robarch" class="bibtex noshow">
+          <pre>
+@inproceedings{huang2018robarch,
+  title={Robotic extrusion of architectural structures with nonstandard topology},
+  author={Huang, Yijiang and Carstensen, Josephine and Tessmer, Lavender and Mueller, Caitlin},
+  booktitle={Robotic Fabrication in Architecture, Art and Design},
+  pages={377--389},
+  year={2018},
+  organization={Springer}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/Huang_Y_SMBT_IMAGE-2.jpg" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            <b>Yijiang Huang</b>, Josephine Carstensen and Caitlin Mueller
+						<br />
+            &ldquo;<b>3D truss topology optimization for automated robotic spatial extrusion</b>,&rdquo;
+						<br/>            
+						In: <i>International Association for Shell and Spatial Structures (IASS) 2018</i>.
+            <br />
+            <a href="javascript:toggleBibtex('huang2018iass')">[BibTeX]</a>
+            <a href="../papers/HuangCarstensenMueller_IASS2018.pdf">[PDF]</a>
+            <a href="https://github.com/yijiangh/choreo">[Code-ROS]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_huang2018iass" class="bibtex noshow">
+          <pre>
+@inproceedings{huang2018iass,
+  title={3D truss topology optimization for automated robotic spatial extrusion},
+  author={Huang, Yijiang and Carstensen, Josephine and Mueller, Caitlin},
+  booktitle={International Association for Shell and Spatial Structures (IASS)},
+  year={2018}
+}
+          </pre>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/IJRapidM_2018.jpg" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+						Kam-Ming Mark Tam, Daniel J. Marshall, Mitchell Gu, Jasmine Kim, <b>Yijiang Huang</b>, Justin Lavallee, Caitlin T. Mueller
+						<br />
+            &ldquo;<b>Fabrication-aware structural optimisation of lattice additive-manufactured with robot-arm</b>,&rdquo;
+						<br/>            
+						<i>International Journal of Rapid Manufacturing</i>,
+            vol. 7,
+            no. 2-3,
+            pp. 120-168,
+            2018.
+            <br />
+            <a href="javascript:toggleBibtex('tam2018fabrication')">[BibTeX]</a>
+            <a href="../papers/IJRapidM2018_KMMTetal.pdf">[PDF]</a>
+            <a href="https://www.inderscienceonline.com/doi/abs/10.1504/IJRAPIDM.2018.092908">[DOI]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_tam2018fabrication" class="bibtex noshow">
+          <pre>
+@article{tam2018fabrication,
+  title={Fabrication-aware structural optimisation of lattice additive-manufactured with robot-arm},
+  author={Tam, Kam-Ming Mark and Marshall, Daniel J and Gu, Mitchell and Kim, Jasmine and Huang, Yijiang and Lavallee, Justin and Mueller, Caitlin T},
+  journal={International Journal of Rapid Manufacturing},
+  volume={7},
+  number={2-3},
+  pages={120--168},
+  year={2018},
+  publisher={Inderscience Publishers (IEL)}
+}
+          </pre>
+          </div>
+
+
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/framefab-01.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            <b>Yijiang Huang</b>, Juyong Zhang, Xin Hu, Guoxian Song, Zhongyuan Liu, Lei Yu and Ligang Liu
+						<br />
+            &ldquo;<b>FrameFab: Robotic Fabrication of Frame Shapes</b>,&rdquo;
+						<br/>            
+						<i>ACM Transactions on Graphics (TOG)</i>,
+            vol. 35,
+            no. 6,
+            pp. 224:1--224:11
+            2016.
+            <br />
+            <a href="javascript:toggleBibtex('huang2016framefab')">[BibTeX]</a>
+            <a href="../papers/a224-huang.pdf">[PDF]</a>
+            <a href="https://dl.acm.org/citation.cfm?id=2982401">[ACM-DL Port]</a>
+            <a href="https://github.com/yijiangh/FrameFab">[Code]</a>
+            <a href="https://vimeo.com/207314054">[Video]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_huang2016framefab" class="bibtex noshow">
+          <pre>
+@article{huang2016framefab,
+ author = {Huang, Yijiang and Zhang, Juyong and Hu, Xin and Song, Guoxian and Liu, Zhongyuan and Yu, Lei and Liu, Ligang},
+ title = {FrameFab: Robotic Fabrication of Frame Shapes},
+ journal = {ACM Trans. Graph.},
+ issue_date = {November 2016},
+ volume = {35},
+ number = {6},
+ month = nov,
+ year = {2016},
+ issn = {0730-0301},
+ pages = {224:1--224:11},
+ articleno = {224},
+ numpages = {11},
+ url = {http://doi.acm.org/10.1145/2980179.2982401},
+ doi = {10.1145/2980179.2982401},
+ acmid = {2982401},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+}
+            </pre>
+          </div>
+    
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2016_ACADIA_RoboticPrinting.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+						Lei Yu, <b>Yijiang Huang</b>, Zhongyuan Liu, Sai Xiao, Ligang Liu, Guoxian Song, Yanxin Wang
+						<br />
+            &ldquo;<b>Highly Informed Robotic 3D Printed Polygon Mesh - A Novel Strategy of 3D Spatial Printing</b>,&rdquo;
+						<br/>            
+						In: <i>Conference of The Association for Computer Aided Design in Architecture (ACADIA), 2016</i>.
+            <br />
+            <a href="javascript:toggleBibtex('yu2016acadia')">[BibTeX]</a>
+            <a href="../papers/acadia16_yu.pdf">[PDF]</a>
+			<a href="http://papers.cumincad.org/cgi-bin/works/paper/acadia16_298">[CumInCAD Port]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_yu2016acadia" class="bibtex noshow">
+          <pre>
+@inproceedings{yu2016acadia,
+  title={Highly Informed Robotic 3D Printed Polygon Mesh: A Novel Strategy of 3D Spatial Printing},
+  author={Yu, Lei and Huang, Yijiang and Liu, Zhongyuan and Xiao, Sai and Liu, Ligang and Song, Guoxian and Wang, Yanxin},
+  booktitle={Proceedings of the 36st Annual Conference of the Association for Computer Aided Design in Architecture (ACADIA)},
+  year={2016},
+  pages={298-307},
+}
+          </pre>
+          </div>
+
+          <h2 style="margin-bottom:0px;padding-top:20px;">Conference Abstracts and Posters</h2>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2023_FoC_inf.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Yi-Hsiu Hung*, Chenming Jiang*, Ziqi Wang, <b>Yijiang Huang</b>, Aurèle L. Gheyselinck, Petrus Aejmelaeus-Lindström 
+						<br />
+            &ldquo;<b>Computational Design and Assembly of Infinitely Reusable Kit of Parts</b>,&rdquo;
+						<br/>            
+						In: <i><a href="https://futureofconstruction.net/">Future of Construction Symposium (2023)</a></i>, Munich, Germany.
+            <br />
+            <a href="../papers/FoC2023_inf_reusable_poster.pdf">[Poster]</a>
+            <br />
+          </div>
+          <div style="clear:both"/>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2023_reuse_symp.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            Keith J. Lee, <b>Yijiang Huang</b>, Caitlin Mueller 
+						<br />
+            &ldquo;<b>A differentiable assignment algorithm for high performance inventory-driven structural design</b>,&rdquo;
+						<br/>            
+						In: <i>(In)visible Reuse Symposium (2023)</i>, Lausanne, Switzerland.
+            <br />
+            <a href="../papers/IRS2023_diff_assignment_abstract.pdf">[Abstract]</a>
+            <br />
+          </div>
+          <div style="clear:both"/>
+          </div>
+
+          <div style="margin-top:20px;margin-bottom:20px">
+            <img src="../papers/2021_topopt_jl_cover.png" style="float:left;width:270px;margin-right:20px;margin-top:10px;margin-bottom:50px"/>
+            <b>Yijiang Huang</b> and Mohamed Tarek
+						<br />
+            &ldquo;<b>TopOpt.jl: Truss and Continuum Topology Optimization, Interactive Visualization, Automatic Differentiation and More</b>,&rdquo;
+						<br/>            
+						In: <i><a href="https://www.wcsmo14.org/">14th World Congress of Structural and Multidisciplinary Optimization (2021)</a></i>.
+            <br />
+            <a href="javascript:toggleBibtex('huang2021topoptjl')">[BibTeX]</a>
+            <a href="../papers/topopt_jl_WCSMO2021.pdf">[Abstract]</a>
+			      <a href="https://youtu.be/27oac8h3V2k">[WCSMO14-Talk-Youtube]</a>
+			      <a href="https://youtu.be/sBqdkxPXluU">[JuliaCon-Talk-Youtube]</a>
+            <br />
+			      <a href="https://github.com/mohamed82008/TopOpt.jl">[TopOpt.jl]</a>
+			      <a href="https://github.com/yijiangh/TopOpt.jl_WCSMO21">[Demo and Benchmark code]</a>
+          </div>
+          <div style="clear:both"/>
+          <div id="bib_huang2021topoptjl" class="bibtex noshow">
+          <pre>
+@inproceedings{huang2021topoptjl,
+  title={TopOpt.jl: Truss and Continuum Topology Optimization, Interactive Visualization, Automatic Differentiation and More},
+  author={Huang, Yijiang and Tarek, Mohamed},
+  booktitle={Proceedings of the 14th World Congress of Structural and Multidisciplinary Optimization},
+  year={2021}
+}
+          </pre>
+          </div>
+ 
+          <h2 style="margin-bottom:0px;padding-top:20px;">Theses</h2>
+          <!-- Generated from JabRef by PubList by Truong Nghiem at 06:25 on 2015.07.08. -->
+          <!-- <ol class="biblist"> -->
+            <!-- Item: yijiangthesis2018 -->
+            <!-- <li ><p> -->
+
+                <div style="margin-top:20px;margin-bottom:20px">
+                Yijiang Huang,
+								<br />
+                &ldquo;<b>Algorithmic planning for robotic assembly of building structures</b>,&rdquo;
+                <br/> 
+                Ph.D. dissertation, Massachusetts Institute of Technology, September 2022, supervised by Caitlin Mueller.
+                <br />
+                <a href="javascript:toggleBibtex('huang2022dissertation')">[BibTeX]</a>
+                <a href="../papers/huang_2022_dissertation.pdf">[PDF]</a>
+              </div>
+              <div id="bib_huang2022dissertation" class="bibtex noshow">
+                <pre>
+@phdthesis{huang2022dissertation,
+author = {Huang, Yijiang},
+title = {Algorithmic planning for robotic assembly of building structures},
+school = {Massachusetts Institute of Technology},
+year = {2022},
+}
+              </pre>
+							</div>
+
+                <div style="margin-top:20px;margin-bottom:20px">
+                Yijiang Huang,
+								<br />
+                &ldquo;<b>Automated Motion Planning for Robotic Assembly of Discrete Architectural Structures</b>,&rdquo;
+                <br/> 
+                Master Thesis, Massachusetts Institute of Technology, June 2018, supervised by Caitlin Mueller.
+                <br />
+                <a href="javascript:toggleBibtex('yijiangthesis2018')">[BibTeX]</a>
+                <a href="https://dspace.mit.edu/handle/1721.1/118487">[MIT-DSpace]</a>
+              </div>
+              <div id="bib_yijiangthesis2018" class="bibtex noshow">
+                <pre>
+@mastersthesis{yijiangthesis2018,
+author = {Huang, Yijiang},
+title = {Automated Motion Planning for Robotic Assembly of Discrete Architectural Structures},
+school = {Massachusetts Institute of Technology},
+year = {2018}}
+              </pre>
+							</div>
+            <!-- </li> -->
+          <!-- </ol> -->
+
+        </div><!-- /.article-wrap -->
+        {% if site.disqus_shortname and page.comments %}
+        <section id="disqus_thread"></section><!-- /#disqus_thread -->
+        {% endif %}
+      </article>
+    </div><!-- /#index -->
+    <div class="footer-wrap">
+      <footer>
+        {% include _footer.html %}
+      </footer>
+    </div><!-- /.footer-wrap -->
+
+    {% include _scripts.html %}
+
+  </body>
+</html>
