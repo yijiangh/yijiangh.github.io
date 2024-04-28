@@ -1,1 +1,1 @@
-Sitemap: https://web.mit.edu/yijiangh/www/sitemap.xml
+Sitemap: https://yijiangh.github.io/sitemap.xml
